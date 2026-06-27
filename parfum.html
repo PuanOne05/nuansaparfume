@@ -14,16 +14,95 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #fafafa;
+      background: #0a0a0a;
       min-height: 100vh;
       color: #1a1a1a;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+    /* ===== ANIMASI GELEMBUNG EMAS ===== */
+    .bubbles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(200,168,124,0.3), rgba(200,168,124,0.05));
+      border: 1px solid rgba(200,168,124,0.15);
+      animation: floatUp linear infinite;
+      pointer-events: none;
+      box-shadow: 0 0 20px rgba(200,168,124,0.05);
+    }
+
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      width: 30%;
+      height: 20%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+      transform: rotate(-30deg);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) translateX(50px) scale(0.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .bubble:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; width: 15px; height: 15px; }
+    .bubble:nth-child(2) { left: 12%; animation-duration: 22s; animation-delay: 2s; width: 8px; height: 8px; }
+    .bubble:nth-child(3) { left: 20%; animation-duration: 16s; animation-delay: 4s; width: 20px; height: 20px; }
+    .bubble:nth-child(4) { left: 28%; animation-duration: 24s; animation-delay: 1s; width: 10px; height: 10px; }
+    .bubble:nth-child(5) { left: 35%; animation-duration: 19s; animation-delay: 3s; width: 25px; height: 25px; }
+    .bubble:nth-child(6) { left: 42%; animation-duration: 21s; animation-delay: 5s; width: 12px; height: 12px; }
+    .bubble:nth-child(7) { left: 50%; animation-duration: 17s; animation-delay: 2s; width: 18px; height: 18px; }
+    .bubble:nth-child(8) { left: 58%; animation-duration: 23s; animation-delay: 4s; width: 7px; height: 7px; }
+    .bubble:nth-child(9) { left: 65%; animation-duration: 20s; animation-delay: 1s; width: 22px; height: 22px; }
+    .bubble:nth-child(10) { left: 72%; animation-duration: 25s; animation-delay: 3s; width: 14px; height: 14px; }
+    .bubble:nth-child(11) { left: 78%; animation-duration: 18s; animation-delay: 5s; width: 9px; height: 9px; }
+    .bubble:nth-child(12) { left: 85%; animation-duration: 22s; animation-delay: 0s; width: 16px; height: 16px; }
+    .bubble:nth-child(13) { left: 92%; animation-duration: 19s; animation-delay: 3s; width: 11px; height: 11px; }
+    .bubble:nth-child(14) { left: 8%; animation-duration: 26s; animation-delay: 6s; width: 19px; height: 19px; }
+    .bubble:nth-child(15) { left: 48%; animation-duration: 20s; animation-delay: 7s; width: 13px; height: 13px; }
+    .bubble:nth-child(16) { left: 32%; animation-duration: 24s; animation-delay: 8s; width: 6px; height: 6px; }
+    .bubble:nth-child(17) { left: 62%; animation-duration: 21s; animation-delay: 2s; width: 17px; height: 17px; }
+    .bubble:nth-child(18) { left: 15%; animation-duration: 23s; animation-delay: 9s; width: 10px; height: 10px; }
+    .bubble:nth-child(19) { left: 55%; animation-duration: 18s; animation-delay: 4s; width: 8px; height: 8px; }
+    .bubble:nth-child(20) { left: 75%; animation-duration: 25s; animation-delay: 6s; width: 14px; height: 14px; }
+    .bubble:nth-child(21) { left: 3%; animation-duration: 20s; animation-delay: 7s; width: 12px; height: 12px; }
+    .bubble:nth-child(22) { left: 40%; animation-duration: 22s; animation-delay: 1s; width: 5px; height: 5px; }
+    .bubble:nth-child(23) { left: 68%; animation-duration: 19s; animation-delay: 8s; width: 21px; height: 21px; }
+    .bubble:nth-child(24) { left: 88%; animation-duration: 24s; animation-delay: 5s; width: 9px; height: 9px; }
+    .bubble:nth-child(25) { left: 25%; animation-duration: 21s; animation-delay: 10s; width: 16px; height: 16px; }
+    .bubble:nth-child(26) { left: 52%; animation-duration: 26s; animation-delay: 3s; width: 7px; height: 7px; }
+    .bubble:nth-child(27) { left: 82%; animation-duration: 20s; animation-delay: 9s; width: 18px; height: 18px; }
+    .bubble:nth-child(28) { left: 18%; animation-duration: 23s; animation-delay: 11s; width: 11px; height: 11px; }
+    .bubble:nth-child(29) { left: 60%; animation-duration: 18s; animation-delay: 6s; width: 13px; height: 13px; }
+    .bubble:nth-child(30) { left: 45%; animation-duration: 25s; animation-delay: 8s; width: 8px; height: 8px; }
 
     /* ===== HERO HEADER ===== */
     .hero {
@@ -33,6 +112,8 @@
       margin-bottom: 2.5rem;
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(200,168,124,0.2);
+      z-index: 1;
     }
 
     .hero::before {
@@ -42,7 +123,7 @@
       right: -10%;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(200,168,124,0.05) 0%, transparent 70%);
       border-radius: 50%;
     }
 
@@ -53,7 +134,7 @@
       left: 20%;
       width: 300px;
       height: 300px;
-      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(200,168,124,0.03) 0%, transparent 70%);
       border-radius: 50%;
     }
 
@@ -75,8 +156,8 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(255,255,255,0.12);
-      color: #b0b0b0;
+      background: rgba(200,168,124,0.15);
+      color: #c8a87c;
       font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -84,7 +165,7 @@
       padding: 0.3rem 1rem;
       border-radius: 50px;
       width: fit-content;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(200,168,124,0.2);
     }
 
     .hero-title {
@@ -111,10 +192,10 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      background: rgba(255,255,255,0.06);
+      background: rgba(200,168,124,0.08);
       padding: 0.75rem 2rem 0.75rem 2rem;
       border-radius: 60px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(200,168,124,0.15);
       backdrop-filter: blur(10px);
     }
 
@@ -125,7 +206,7 @@
     .hero-stat-number {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #c8a87c;
       letter-spacing: -0.02em;
     }
 
@@ -140,7 +221,15 @@
     .hero-divider {
       width: 1px;
       height: 40px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(200,168,124,0.2);
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      position: relative;
+      z-index: 1;
     }
 
     /* ===== TOOLBAR ===== */
@@ -152,10 +241,12 @@
       gap: 1rem 1.5rem;
       margin-bottom: 2rem;
       padding: 0.75rem 1.5rem;
-      background: #ffffff;
+      background: #1a1a1a;
       border-radius: 16px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      border: 1px solid #f0f0f0;
+      border: 1px solid rgba(200,168,124,0.15);
+      position: relative;
+      z-index: 2;
     }
 
     .toolbar-left {
@@ -175,7 +266,7 @@
     .filter-label {
       font-size: 0.5rem;
       font-weight: 700;
-      color: #999999;
+      color: #c8a87c;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-right: 0.3rem;
@@ -196,20 +287,20 @@
     }
 
     .filter-btn:hover {
-      background: #f5f5f5;
-      color: #1a1a1a;
+      background: rgba(200,168,124,0.1);
+      color: #c8a87c;
     }
 
     .filter-btn.active {
-      background: #1a1a1a;
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      background: #c8a87c;
+      color: #1a1a1a;
+      box-shadow: 0 2px 12px rgba(200,168,124,0.3);
     }
 
     .filter-divider {
       width: 1px;
       height: 28px;
-      background: #e8e8e8;
+      background: rgba(200,168,124,0.15);
     }
 
     .toolbar-right {
@@ -221,16 +312,17 @@
     .filter-stats {
       font-size: 0.7rem;
       font-weight: 600;
-      color: #666666;
-      background: #f5f5f5;
+      color: #c8a87c;
+      background: rgba(200,168,124,0.1);
       padding: 0.25rem 1rem;
       border-radius: 30px;
       white-space: nowrap;
+      border: 1px solid rgba(200,168,124,0.1);
     }
 
     .reset-btn {
       background: transparent;
-      border: 1px solid #e8e8e8;
+      border: 1px solid rgba(200,168,124,0.2);
       padding: 0.3rem 1.2rem;
       border-radius: 30px;
       font-size: 0.65rem;
@@ -243,9 +335,9 @@
     }
 
     .reset-btn:hover {
-      background: #f5f5f5;
-      border-color: #cccccc;
-      color: #1a1a1a;
+      background: rgba(200,168,124,0.1);
+      border-color: #c8a87c;
+      color: #c8a87c;
     }
 
     /* ===== GRID ===== */
@@ -253,25 +345,196 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ===== CARD - ENHANCED ===== */
+    /* ===== CARD DENGAN GARIS-GARIS EMAS ===== */
     .card {
-      background: #ffffff;
+      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
       border-radius: 16px;
       padding: 1.5rem 1.5rem 1.25rem;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border: 1px solid #f0f0f0;
       display: flex;
       flex-direction: column;
       position: relative;
       box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      overflow: hidden;
+      
+      border: 1px solid transparent;
+      background-clip: padding-box;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #e0e0e0;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    /* Efek garis emas berlapis */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 18px;
+      padding: 2px;
+      background: linear-gradient(135deg, 
+        rgba(200,168,124,0.6) 0%, 
+        rgba(200,168,124,0.1) 20%,
+        rgba(200,168,124,0.4) 40%,
+        rgba(200,168,124,0.05) 60%,
+        rgba(200,168,124,0.5) 80%,
+        rgba(200,168,124,0.2) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
+      transition: all 0.4s ease;
+    }
+
+    /* Efek shimmer pada garis */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 18px;
+      padding: 2px;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(200,168,124,0.3) 25%,
+        transparent 50%,
+        rgba(200,168,124,0.3) 75%,
+        transparent 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-size: 200% 200%;
+      animation: shimmerBorder 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmerBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card:hover::before {
+      background: linear-gradient(135deg, 
+        rgba(200,168,124,0.9) 0%, 
+        rgba(200,168,124,0.2) 25%,
+        rgba(200,168,124,0.7) 50%,
+        rgba(200,168,124,0.1) 75%,
+        rgba(200,168,124,0.8) 100%
+      );
+      animation: borderPulse 2s ease-in-out infinite;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes borderPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Sudut-sudut dekoratif emas */
+    .card .corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-color: rgba(200,168,124,0.3);
+      border-style: solid;
+      border-width: 0;
+      z-index: 4;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .card .corner-tl {
+      top: 8px;
+      left: 8px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+      border-radius: 4px 0 0 0;
+    }
+
+    .card .corner-tr {
+      top: 8px;
+      right: 8px;
+      border-top-width: 2px;
+      border-right-width: 2px;
+      border-radius: 0 4px 0 0;
+    }
+
+    .card .corner-bl {
+      bottom: 8px;
+      left: 8px;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+      border-radius: 0 0 0 4px;
+    }
+
+    .card .corner-br {
+      bottom: 8px;
+      right: 8px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+      border-radius: 0 0 4px 0;
+    }
+
+    .card:hover .corner {
+      border-color: rgba(200,168,124,0.7);
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Garis dekoratif horizontal & vertikal */
+    .card .gold-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(200,168,124,0.15), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .card .gold-line-h {
+      left: 10%;
+      right: 10%;
+      height: 1px;
+    }
+
+    .card .gold-line-h-top {
+      top: 35%;
+    }
+
+    .card .gold-line-h-bottom {
+      bottom: 35%;
+    }
+
+    .card .gold-line-v {
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+    }
+
+    .card .gold-line-v-left {
+      left: 15%;
+      background: linear-gradient(180deg, transparent, rgba(200,168,124,0.15), transparent);
+    }
+
+    .card .gold-line-v-right {
+      right: 15%;
+      background: linear-gradient(180deg, transparent, rgba(200,168,124,0.15), transparent);
+    }
+
+    .card:hover .gold-line {
+      background: linear-gradient(90deg, transparent, rgba(200,168,124,0.3), transparent);
+    }
+
+    .card:hover .gold-line-v {
+      background: linear-gradient(180deg, transparent, rgba(200,168,124,0.3), transparent);
     }
 
     .card-number {
@@ -280,21 +543,25 @@
       right: 1.25rem;
       font-size: 0.5rem;
       font-weight: 700;
-      color: #cccccc;
+      color: #a09080;
       letter-spacing: 0.04em;
-      background: #f8f8f8;
+      background: rgba(200,168,124,0.1);
       padding: 0.15rem 0.6rem;
       border-radius: 20px;
+      border: 1px solid rgba(200,168,124,0.15);
+      z-index: 5;
     }
 
     .card-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #1a1a1a;
+      color: #f0e8d8;
       letter-spacing: -0.01em;
       line-height: 1.3;
       margin-bottom: 0.6rem;
       padding-right: 3.5rem;
+      position: relative;
+      z-index: 5;
     }
 
     .card-badges {
@@ -302,6 +569,8 @@
       flex-wrap: wrap;
       gap: 0.25rem 0.4rem;
       margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 5;
     }
 
     .card-badge {
@@ -311,82 +580,59 @@
       border-radius: 30px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      border: 1px solid rgba(200,168,124,0.3);
     }
 
-    .badge-feminim {
-      background: #f5eeec;
-      color: #b05a4a;
-    }
-
-    .badge-masculine {
-      background: #eef0f5;
-      color: #3a5a8a;
-    }
-
-    .badge-unisex {
-      background: #eef5ee;
-      color: #4a8a5a;
-    }
-
-    .badge-scent-manis {
-      background: #f8f0e8;
-      color: #b08050;
-    }
-
-    .badge-scent-segar {
-      background: #e8f2f5;
-      color: #4a8a95;
-    }
-
-    .badge-place-indoor {
-      background: #f0f2f5;
-      color: #5a6a8a;
-    }
-
-    .badge-place-outdoor {
-      background: #f0f5ec;
-      color: #5a8a4a;
-    }
-
-    .badge-activity-olahraga {
-      background: #f2f5ec;
-      color: #6a8a4a;
-    }
-
+    .badge-feminim,
+    .badge-masculine,
+    .badge-unisex,
+    .badge-scent-manis,
+    .badge-scent-segar,
+    .badge-place-indoor,
+    .badge-place-outdoor,
+    .badge-activity-olahraga,
     .badge-activity-ac {
-      background: #ecf0f5;
-      color: #4a6a9a;
+      background: rgba(200,168,124,0.15);
+      color: #c8a87c;
+      border: 1px solid rgba(200,168,124,0.25);
     }
 
     .card-desc {
       font-size: 0.78rem;
       line-height: 1.7;
-      color: #555555;
+      color: #d0c8b8;
       margin: 0 0 0.4rem;
       font-weight: 400;
       flex: 1;
+      position: relative;
+      z-index: 5;
     }
 
     .card-notes {
       font-size: 0.7rem;
-      color: #666666;
-      background: #f8f8f8;
+      color: #c0b8a8;
+      background: rgba(200,168,124,0.06);
       padding: 0.5rem 0.8rem;
       border-radius: 10px;
       margin: 0.3rem 0 0.5rem;
       line-height: 1.6;
-      border-left: 3px solid #c8a87c;
+      border-left: 3px solid rgba(200,168,124,0.4);
       font-style: italic;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 5;
     }
 
     .card-footer {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       margin-top: 0.75rem;
       padding-top: 0.75rem;
-      border-top: 1px solid #f0f0f0;
+      border-top: 1px solid rgba(200,168,124,0.1);
+      position: relative;
+      z-index: 5;
     }
 
     .card-tags {
@@ -398,31 +644,31 @@
     .card-tag {
       font-size: 0.5rem;
       font-weight: 600;
-      color: #999999;
-      background: #f5f5f5;
+      color: #a09080;
+      background: rgba(200,168,124,0.08);
       padding: 0.1rem 0.6rem;
       border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      border: 1px solid rgba(200,168,124,0.08);
     }
 
-    .card-action {
-      background: #1a1a1a;
-      border: none;
-      color: #ffffff;
-      font-size: 0.6rem;
+    /* ===== CARD MIX ===== */
+    .card-mix .card-desc {
       font-weight: 600;
-      padding: 0.25rem 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-      letter-spacing: 0.03em;
+      color: #c8a87c;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0.5rem 0;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
-    .card-action:hover {
-      background: #333333;
-      transform: scale(1.02);
+    .card-mix .card-desc::before,
+    .card-mix .card-desc::after {
+      content: '✦';
+      margin: 0 0.5rem;
+      color: #c8a87c;
     }
 
     /* ===== EMPTY ===== */
@@ -433,9 +679,9 @@
       color: #bbbbbb;
       font-size: 0.95rem;
       font-weight: 400;
-      background: #ffffff;
+      background: #1a1a1a;
       border-radius: 16px;
-      border: 1px solid #f0f0f0;
+      border: 1px solid rgba(200,168,124,0.2);
     }
 
     /* ===== RESPONSIVE ===== */
@@ -517,6 +763,19 @@
         right: 0.75rem;
         font-size: 0.45rem;
       }
+
+      .card .corner {
+        width: 14px;
+        height: 14px;
+      }
+
+      .card .gold-line-h {
+        display: none;
+      }
+
+      .card .gold-line-v {
+        display: none;
+      }
     }
 
     @media (max-width: 480px) {
@@ -582,6 +841,11 @@
   </style>
 </head>
 <body>
+
+<!-- ===== GELEMBUNG EMAS ===== -->
+<div class="bubbles-container" id="bubblesContainer">
+  <!-- 30 gelembung emas akan dibuat oleh JavaScript -->
+</div>
 
 <div class="container">
 
@@ -668,14 +932,49 @@
 
 <script>
   // ============================================================
-  // DATA - Bebas Request dipindah ke posisi 1
+  // MEMBUAT GELEMBUNG EMAS
+  // ============================================================
+  function createBubbles() {
+    const container = document.getElementById('bubblesContainer');
+    const bubbleCount = 40;
+    
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      
+      // Variasi ukuran
+      const size = Math.random() * 20 + 5;
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      
+      // Variasi posisi horizontal
+      bubble.style.left = Math.random() * 100 + '%';
+      
+      // Variasi durasi animasi
+      const duration = Math.random() * 15 + 15;
+      bubble.style.animationDuration = duration + 's';
+      
+      // Variasi delay
+      bubble.style.animationDelay = Math.random() * 15 + 's';
+      
+      // Variasi opacity
+      bubble.style.opacity = Math.random() * 0.5 + 0.2;
+      
+      // Variasi warna emas
+      const goldShade = Math.random() * 40 + 160;
+      bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(${goldShade},${goldShade - 20},${goldShade - 60},0.3), rgba(${goldShade},${goldShade - 20},${goldShade - 60},0.05))`;
+      bubble.style.borderColor = `rgba(${goldShade},${goldShade - 20},${goldShade - 60},0.15)`;
+      
+      container.appendChild(bubble);
+    }
+  }
+
+  // ============================================================
+  // DATA
   // ============================================================
   const products = [
-    // BEBAS REQUEST - POSISI 1
     { no: 1, name: "Bebas Request", gender: "unisex", scent: "manis", place: "indoor", activity: "ac", desc: "Varian bebas request sesuai keinginan pelanggan. Kami siap menyesuaikan aroma favorit anda.", notes: "Custom request. Tentukan sendiri aroma yang anda inginkan." },
-    
-    // PRODUK LAINNYA - URUTAN BERIKUTNYA
-    { no: 2, name: "MIX Parfum", gender: "feminim", scent: "segar", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk mandarin, aprikot, persik, peony, mawar, teh hijau, melati, citrus, musk.", notes: "Aroma bunga peony, mawar. Segar, bersih, floral lembut, elegan." },
+    { no: 2, name: "MIX Parfum", gender: "feminim", scent: "segar", place: "indoor", activity: "ac", desc: "mix", notes: "mix" },
     { no: 3, name: "Scandalous", gender: "feminim", scent: "manis", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem/lembut, elegan. Floral fruity (raspberry liqueur, black peony, praline).", notes: "Terinspirasi dari bunga & buah. Lembut dan elegan." },
     { no: 4, name: "DR Sauvage Force", gender: "masculine", scent: "manis", place: "indoor", activity: "olahraga", desc: "Pemakaian indoor & outdoor. Aroma manis, kalem/lembut, mewah. Jeruk, kayu cendana, amber.", notes: "Maskulin, mewah, aroma kayu & jeruk." },
     { no: 5, name: "Libre", gender: "feminim", scent: "manis", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, manis. Floral, lavender, bunga jeruk, vanila.", notes: "Berani, feminin, segar." },
@@ -796,9 +1095,29 @@
       const placeLabel = p.place === 'indoor' ? 'Indoor' : 'Outdoor';
       const activityClass = p.activity === 'olahraga' ? 'badge-activity-olahraga' : 'badge-activity-ac';
       const activityLabel = p.activity === 'olahraga' ? 'Olahraga' : 'Diam di AC';
+      
+      let cardClass = '';
+      let descText = p.desc;
+      let notesText = p.notes;
+      
+      if (p.name === "MIX Parfum") {
+        cardClass = 'card-mix';
+        descText = "mix";
+        notesText = "mix";
+      }
 
       return `
-        <div class="card" style="animation-delay: ${index * 0.04}s">
+        <div class="card ${cardClass}" style="animation-delay: ${index * 0.04}s">
+          <!-- Elemen dekoratif garis emas -->
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+          <div class="gold-line gold-line-h gold-line-h-top"></div>
+          <div class="gold-line gold-line-h gold-line-h-bottom"></div>
+          <div class="gold-line-v gold-line-v-left"></div>
+          <div class="gold-line-v gold-line-v-right"></div>
+          
           <span class="card-number">No. ${p.no}</span>
           <div class="card-title">${p.name}</div>
           <div class="card-badges">
@@ -807,14 +1126,13 @@
             <span class="card-badge ${placeClass}">${placeLabel}</span>
             <span class="card-badge ${activityClass}">${activityLabel}</span>
           </div>
-          <div class="card-desc">${p.desc}</div>
-          ${p.notes ? `<div class="card-notes">${p.notes}</div>` : ''}
+          <div class="card-desc">${descText}</div>
+          ${notesText ? `<div class="card-notes">${notesText}</div>` : ''}
           <div class="card-footer">
             <div class="card-tags">
               <span class="card-tag">${p.gender}</span>
               <span class="card-tag">${placeLabel}</span>
             </div>
-            <button class="card-action">Lihat Detail</button>
           </div>
         </div>
       `;
@@ -860,6 +1178,7 @@
   // ============================================================
   // INIT
   // ============================================================
+  createBubbles();
   render();
 </script>
 </body>
