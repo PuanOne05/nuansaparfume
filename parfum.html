@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Etalase Parfum</title>
+  <title>Etalase Parfum</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
 
     body {
-      background: #f8f6f2;
+      background: #f0ebe6;
       padding: 2rem 1.5rem;
+      min-height: 100vh;
     }
 
     .container {
@@ -22,245 +23,308 @@
       margin: 0 auto;
     }
 
-    header {
+    /* ===== HEADER ===== */
+    .header {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
       gap: 1rem;
     }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #2c1e16;
-      letter-spacing: -0.5px;
+    .header-left {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      align-items: baseline;
+      gap: 0.75rem;
     }
 
-    h1 small {
+    .header-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c1e16;
+      letter-spacing: -0.02em;
+    }
+
+    .header-sub {
       font-size: 0.9rem;
       font-weight: 400;
-      color: #7f6b5c;
-      margin-left: 0.5rem;
+      color: #8a7a6b;
+      letter-spacing: 0.02em;
     }
 
+    .header-badge {
+      background: #dccfc4;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #3d2e24;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== FILTER SECTION ===== */
     .filter-section {
-      background: white;
+      background: #ffffff;
       border-radius: 20px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      border: 1px solid #e5ded7;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 2px 12px rgba(44, 30, 22, 0.06);
+      border: 1px solid #e6dfd8;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1.5rem 2rem;
+      gap: 1.25rem 2rem;
     }
 
     .filter-group {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.4rem 0.6rem;
+      gap: 0.3rem 0.5rem;
     }
 
     .filter-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #7f6b5c;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #8a7a6b;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-right: 0.2rem;
+      letter-spacing: 0.06em;
+      margin-right: 0.15rem;
     }
 
     .filter-btn {
       background: transparent;
-      border: 1px solid #e5ded7;
+      border: 1.5px solid transparent;
       padding: 0.3rem 0.9rem;
       border-radius: 30px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #4f3e32;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #5f4d3d;
       cursor: pointer;
-      transition: 0.2s;
-      white-space: nowrap;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
     }
 
     .filter-btn:hover {
-      background: #f0ebe6;
-      border-color: #ccc2b8;
+      background: #f5f0eb;
+      border-color: #d6cbc0;
     }
 
     .filter-btn.active {
       background: #2c1e16;
-      color: white;
+      color: #ffffff;
       border-color: #2c1e16;
     }
 
     .filter-btn.active-gender {
       background: #2c1e16;
-      color: white;
+      color: #ffffff;
       border-color: #2c1e16;
     }
 
     .filter-btn.active-scent {
-      background: #8b6b4d;
-      color: white;
-      border-color: #8b6b4d;
+      background: #b28b6f;
+      color: #ffffff;
+      border-color: #b28b6f;
     }
 
     .filter-btn.active-place {
-      background: #3d6b7a;
-      color: white;
-      border-color: #3d6b7a;
+      background: #5d8799;
+      color: #ffffff;
+      border-color: #5d8799;
     }
 
     .filter-btn.active-activity {
-      background: #6b7a4d;
-      color: white;
-      border-color: #6b7a4d;
+      background: #7f9466;
+      color: #ffffff;
+      border-color: #7f9466;
     }
 
     .filter-divider {
       width: 1px;
-      height: 28px;
-      background: #e5ded7;
+      height: 30px;
+      background: #e6dfd8;
     }
 
     .filter-stats {
-      font-size: 0.8rem;
-      color: #7f6b5c;
-      background: #f5f1ed;
-      padding: 0.2rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #5f4d3d;
+      background: #f5f0eb;
+      padding: 0.2rem 1rem;
       border-radius: 40px;
-      font-weight: 500;
       margin-left: auto;
       white-space: nowrap;
     }
 
     .reset-btn {
       background: transparent;
-      border: 1px dashed #ccc2b8;
-      padding: 0.3rem 0.9rem;
+      border: 1.5px dashed #d6cbc0;
+      padding: 0.3rem 1rem;
       border-radius: 30px;
       font-size: 0.7rem;
-      color: #7f6b5c;
+      font-weight: 500;
+      color: #8a7a6b;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
     }
 
     .reset-btn:hover {
-      background: #f5f1ed;
-      border-color: #b3a092;
+      background: #f5f0eb;
+      border-color: #b8a99a;
+      color: #3d2e24;
     }
 
+    /* ===== GRID ===== */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
     }
 
+    /* ===== CARD ===== */
     .card {
-      background: white;
-      border-radius: 24px;
+      background: #ffffff;
+      border-radius: 20px;
       padding: 1.25rem 1.25rem 1.5rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-      border: 1px solid #ede8e2;
-      transition: 0.2s ease;
+      border: 1px solid #e6dfd8;
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 2px 8px rgba(44, 30, 22, 0.03);
     }
 
     .card:hover {
-      border-color: #d6ccc3;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      border-color: #c9bbb0;
+      box-shadow: 0 8px 28px rgba(44, 30, 22, 0.07);
+      transform: translateY(-2px);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       flex-wrap: wrap;
       gap: 0.3rem;
     }
 
     .card-number {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #b3a092;
-      background: #f2ede8;
-      padding: 0.15rem 0.6rem;
-      border-radius: 40px;
-      letter-spacing: 0.3px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #b8a99a;
+      background: #f5f0eb;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      letter-spacing: 0.04em;
     }
 
     .card-title {
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: #1f150f;
       word-break: break-word;
+      letter-spacing: -0.01em;
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
     .card-badge {
       display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 40px;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      border-radius: 30px;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
-      background: #f0ebe6;
-      color: #4f3e32;
-      margin-right: 0.3rem;
+      letter-spacing: 0.04em;
     }
 
-    .badge-feminim { background: #fce9e6; color: #b13e3a; }
-    .badge-masculine { background: #e3ecf5; color: #1e4c73; }
-    .badge-unisex { background: #e6f0e9; color: #2b6e4f; }
+    .badge-feminim {
+      background: #f5e4e0;
+      color: #a84f45;
+    }
 
-    .badge-scent { background: #f5ede4; color: #8b6b4d; }
-    .badge-place { background: #e4edf0; color: #3d6b7a; }
-    .badge-activity { background: #edf0e4; color: #6b7a4d; }
+    .badge-masculine {
+      background: #e0eaf0;
+      color: #2d5f7a;
+    }
+
+    .badge-unisex {
+      background: #e0ece4;
+      color: #3d7a5a;
+    }
+
+    .badge-scent-manis {
+      background: #f5ede4;
+      color: #a87d5f;
+    }
+
+    .badge-scent-segar {
+      background: #e4f0f0;
+      color: #3d7a85;
+    }
+
+    .badge-place-indoor {
+      background: #e8edf0;
+      color: #4d6a7a;
+    }
+
+    .badge-place-outdoor {
+      background: #edf0e8;
+      color: #5d7a4d;
+    }
+
+    .badge-activity-olahraga {
+      background: #eef0e8;
+      color: #6a7a4d;
+    }
+
+    .badge-activity-ac {
+      background: #e8edf5;
+      color: #4d6a8a;
+    }
 
     .card-desc {
-      margin: 0.7rem 0 0.5rem;
-      font-size: 0.9rem;
-      color: #3b2e25;
-      line-height: 1.4;
+      margin: 0.4rem 0 0.5rem;
+      font-size: 0.85rem;
+      color: #3d2e24;
+      line-height: 1.5;
+      font-weight: 400;
     }
 
     .card-notes {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #6f5d4e;
       background: #f8f4f0;
       padding: 0.5rem 0.7rem;
-      border-radius: 14px;
-      margin: 0.3rem 0 0.5rem;
-      border-left: 3px solid #d6ccc3;
-      line-height: 1.4;
+      border-radius: 12px;
+      margin: 0.2rem 0 0.4rem;
+      border-left: 3px solid #d6cbc0;
+      line-height: 1.5;
     }
 
     .card-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.3rem 0.6rem;
-      margin-top: 0.3rem;
-      font-size: 0.7rem;
-      color: #7f6b5c;
+      margin-top: 0.4rem;
+      padding-top: 0.6rem;
       border-top: 1px solid #ede8e2;
-      padding-top: 0.7rem;
       margin-top: auto;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #8a7a6b;
     }
 
     .card-meta span {
-      background: #f5f1ed;
-      padding: 0.15rem 0.6rem;
+      background: #f5f0eb;
+      padding: 0.1rem 0.6rem;
       border-radius: 20px;
     }
 
@@ -268,82 +332,142 @@
       grid-column: 1 / -1;
       text-align: center;
       padding: 4rem 1rem;
-      color: #9b8a7b;
+      color: #b8a99a;
       background: #faf8f6;
-      border-radius: 40px;
-      border: 1px dashed #ddd2c8;
+      border-radius: 30px;
+      border: 1.5px dashed #ddd2c8;
+      font-weight: 500;
+      font-size: 1rem;
     }
 
-    @media (max-width: 640px) {
-      body { padding: 1rem; }
-      header { flex-direction: column; align-items: stretch; }
-      .filter-section { flex-direction: column; align-items: stretch; gap: 0.8rem; padding: 0.8rem 1rem; }
-      .filter-group { flex-wrap: wrap; }
-      .filter-divider { display: none; }
-      .filter-stats { margin-left: 0; }
-      .grid { grid-template-columns: 1fr; }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .header-left {
+        flex-wrap: wrap;
+      }
+
+      .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.7rem;
+        padding: 1rem;
+        border-radius: 16px;
+      }
+
+      .filter-group {
+        gap: 0.25rem 0.4rem;
+      }
+
+      .filter-divider {
+        display: none;
+      }
+
+      .filter-stats {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .reset-btn {
+        align-self: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 1.5rem;
+      }
+
+      .filter-btn {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.7rem;
+      }
+
+      .card-title {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <header>
-    <h1>
-      🧴 Etalase Parfum
-      <small>semua varian</small>
-    </h1>
-  </header>
 
-  <!-- Filter Section -->
-  <div class="filter-section" id="filterSection">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <span class="header-title">Etalase Parfum</span>
+      <span class="header-sub">semua varian</span>
+    </div>
+    <span class="header-badge">100 varian</span>
+  </div>
+
+  <!-- FILTER SECTION -->
+  <div class="filter-section">
     <!-- Gender -->
     <div class="filter-group">
-      <span class="filter-label">👤 Gender</span>
+      <span class="filter-label">Gender</span>
       <button class="filter-btn active" data-filter="gender" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="gender" data-value="feminim">🌸 Feminim</button>
-      <button class="filter-btn" data-filter="gender" data-value="masculine">🧔 Masculine</button>
-      <button class="filter-btn" data-filter="gender" data-value="unisex">⚖️ Unisex</button>
+      <button class="filter-btn" data-filter="gender" data-value="feminim">Feminim</button>
+      <button class="filter-btn" data-filter="gender" data-value="masculine">Masculine</button>
+      <button class="filter-btn" data-filter="gender" data-value="unisex">Unisex</button>
     </div>
 
     <div class="filter-divider"></div>
 
-    <!-- Scent type -->
+    <!-- Scent -->
     <div class="filter-group">
-      <span class="filter-label">🌿 Tipe Wangi</span>
+      <span class="filter-label">Tipe Wangi</span>
       <button class="filter-btn active" data-filter="scent" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="scent" data-value="manis">🍯 Manis</button>
-      <button class="filter-btn" data-filter="scent" data-value="segar">🌊 Segar</button>
+      <button class="filter-btn" data-filter="scent" data-value="manis">Manis</button>
+      <button class="filter-btn" data-filter="scent" data-value="segar">Segar</button>
     </div>
 
     <div class="filter-divider"></div>
 
     <!-- Place -->
     <div class="filter-group">
-      <span class="filter-label">📍 Tempat</span>
+      <span class="filter-label">Tempat</span>
       <button class="filter-btn active" data-filter="place" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="place" data-value="indoor">🏠 Indoor</button>
-      <button class="filter-btn" data-filter="place" data-value="outdoor">🌳 Outdoor</button>
+      <button class="filter-btn" data-filter="place" data-value="indoor">Indoor</button>
+      <button class="filter-btn" data-filter="place" data-value="outdoor">Outdoor</button>
     </div>
 
     <div class="filter-divider"></div>
 
     <!-- Activity -->
     <div class="filter-group">
-      <span class="filter-label">🏃 Aktivitas</span>
+      <span class="filter-label">Aktivitas</span>
       <button class="filter-btn active" data-filter="activity" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="activity" data-value="olahraga">🏋️ Olahraga</button>
-      <button class="filter-btn" data-filter="activity" data-value="ac">❄️ Diam di AC</button>
+      <button class="filter-btn" data-filter="activity" data-value="olahraga">Olahraga</button>
+      <button class="filter-btn" data-filter="activity" data-value="ac">Diam di AC</button>
     </div>
 
-    <div class="filter-stats" id="filterStats">0 varian</div>
-    <button class="reset-btn" id="resetFilters">↺ Reset</button>
+    <span class="filter-stats" id="filterStats">0 varian</span>
+    <button class="reset-btn" id="resetFilters">Reset Filter</button>
   </div>
 
+  <!-- GRID -->
   <div class="grid" id="cardGrid"></div>
 </div>
 
 <script>
-  // ========== DATA PRODUK (dengan tambahan properti filter) ==========
+  // ============================================================
+  // DATA PRODUK
+  // ============================================================
   const products = [
     // 1-30
     { no: 1, name: "MIX Parfum", gender: "feminim", scent: "segar", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk mandarin, aprikot, persik, peony, mawar, teh hijau, melati, citrus, musk.", notes: "Aroma bunga peony, mawar. Segar, bersih, floral lembut, elegan." },
@@ -436,7 +560,9 @@
     { no: 100, name: "Bebas Request", gender: "unisex", scent: "manis", place: "indoor", activity: "ac", desc: "Varian bebas request sesuai keinginan pelanggan.", notes: "Custom request." },
   ];
 
-  // ========== STATE FILTER ==========
+  // ============================================================
+  // STATE & RENDER
+  // ============================================================
   const filters = {
     gender: 'all',
     scent: 'all',
@@ -447,7 +573,6 @@
   const grid = document.getElementById('cardGrid');
   const filterStats = document.getElementById('filterStats');
 
-  // ========== RENDER ==========
   function render() {
     const filtered = products.filter(p => {
       if (filters.gender !== 'all' && p.gender !== filters.gender) return false;
@@ -457,59 +582,62 @@
       return true;
     });
 
-    filterStats.textContent = `${filtered.length} varian`;
+    filterStats.textContent = filtered.length + ' varian';
 
     if (filtered.length === 0) {
-      grid.innerHTML = `<div class="empty-state">☁️ Tidak ada varian untuk filter yang dipilih</div>`;
+      grid.innerHTML = `<div class="empty-state">Tidak ada varian untuk filter yang dipilih</div>`;
       return;
     }
 
     grid.innerHTML = filtered.map(p => {
       const genderClass = p.gender === 'feminim' ? 'badge-feminim' : 
                           p.gender === 'masculine' ? 'badge-masculine' : 'badge-unisex';
-      const scentLabel = p.scent === 'manis' ? '🍯 Manis' : '🌊 Segar';
-      const placeLabel = p.place === 'indoor' ? '🏠 Indoor' : '🌳 Outdoor';
-      const activityLabel = p.activity === 'olahraga' ? '🏋️ Olahraga' : '❄️ AC';
+      const scentClass = p.scent === 'manis' ? 'badge-scent-manis' : 'badge-scent-segar';
+      const scentLabel = p.scent === 'manis' ? 'Manis' : 'Segar';
+      const placeClass = p.place === 'indoor' ? 'badge-place-indoor' : 'badge-place-outdoor';
+      const placeLabel = p.place === 'indoor' ? 'Indoor' : 'Outdoor';
+      const activityClass = p.activity === 'olahraga' ? 'badge-activity-olahraga' : 'badge-activity-ac';
+      const activityLabel = p.activity === 'olahraga' ? 'Olahraga' : 'Diam di AC';
+
       return `
         <div class="card">
           <div class="card-header">
             <span class="card-title">${p.name}</span>
             <span class="card-number">#${p.no}</span>
           </div>
-          <div>
+          <div class="card-badges">
             <span class="card-badge ${genderClass}">${p.gender}</span>
-            <span class="card-badge badge-scent">${scentLabel}</span>
-            <span class="card-badge badge-place">${placeLabel}</span>
-            <span class="card-badge badge-activity">${activityLabel}</span>
+            <span class="card-badge ${scentClass}">${scentLabel}</span>
+            <span class="card-badge ${placeClass}">${placeLabel}</span>
+            <span class="card-badge ${activityClass}">${activityLabel}</span>
           </div>
           <div class="card-desc">${p.desc}</div>
-          ${p.notes ? `<div class="card-notes">🍃 ${p.notes}</div>` : ''}
+          ${p.notes ? `<div class="card-notes">${p.notes}</div>` : ''}
           <div class="card-meta">
-            <span>🏷️ ${p.gender}</span>
-            <span>📍 ${placeLabel}</span>
-            <span>📌 #${p.no}</span>
+            <span>${p.gender}</span>
+            <span>${placeLabel}</span>
+            <span>#${p.no}</span>
           </div>
         </div>
       `;
     }).join('');
   }
 
-  // ========== EVENT LISTENER FILTER ==========
+  // ============================================================
+  // EVENT LISTENERS
+  // ============================================================
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const filterType = btn.dataset.filter;
       const value = btn.dataset.value;
 
-      // Update state
       filters[filterType] = value;
 
-      // Update UI active class dalam group yang sama
       const parentGroup = btn.closest('.filter-group');
       parentGroup.querySelectorAll('.filter-btn').forEach(b => {
         b.classList.remove('active', 'active-gender', 'active-scent', 'active-place', 'active-activity');
       });
 
-      // Tambah class active sesuai tipe
       if (value === 'all') {
         btn.classList.add('active');
       } else {
@@ -523,7 +651,6 @@
     });
   });
 
-  // ========== RESET ==========
   document.getElementById('resetFilters').addEventListener('click', () => {
     filters.gender = 'all';
     filters.scent = 'all';
@@ -540,7 +667,9 @@
     render();
   });
 
-  // ========== INIT ==========
+  // ============================================================
+  // INIT
+  // ============================================================
   render();
 </script>
 </body>
