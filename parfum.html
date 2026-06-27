@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Etalase Parfum</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f8f6f2;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #2c1e16;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h1 small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #7f6b5c;
+      margin-left: 0.5rem;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #e5ded7;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #4f3e32;
+      cursor: pointer;
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .filter-btn:hover {
+      background: #f0ebe6;
+    }
+
+    .filter-btn.active {
+      background: #2c1e16;
+      color: white;
+    }
+
+    .counter {
+      font-size: 0.8rem;
+      background: #e5ded7;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      color: #2c1e16;
+      font-weight: 500;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.25rem 1.25rem 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+      border: 1px solid #ede8e2;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: #d6ccc3;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .card-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #b3a092;
+      background: #f2ede8;
+      padding: 0.15rem 0.6rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1f150f;
+      word-break: break-word;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: #f0ebe6;
+      color: #4f3e32;
+    }
+
+    .badge-feminim {
+      background: #fce9e6;
+      color: #b13e3a;
+    }
+
+    .badge-masculine {
+      background: #e3ecf5;
+      color: #1e4c73;
+    }
+
+    .badge-unisex {
+      background: #e6f0e9;
+      color: #2b6e4f;
+    }
+
+    .card-desc {
+      margin: 0.7rem 0 0.5rem;
+      font-size: 0.9rem;
+      color: #3b2e25;
+      line-height: 1.4;
+    }
+
+    .card-notes {
+      font-size: 0.8rem;
+      color: #6f5d4e;
+      background: #f8f4f0;
+      padding: 0.5rem 0.7rem;
+      border-radius: 14px;
+      margin: 0.3rem 0 0.5rem;
+      border-left: 3px solid #d6ccc3;
+      line-height: 1.4;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.6rem;
+      margin-top: 0.3rem;
+      font-size: 0.7rem;
+      color: #7f6b5c;
+      border-top: 1px solid #ede8e2;
+      padding-top: 0.7rem;
+      margin-top: auto;
+    }
+
+    .card-meta span {
+      background: #f5f1ed;
+      padding: 0.15rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #9b8a7b;
+      background: #faf8f6;
+      border-radius: 40px;
+      border: 1px dashed #ddd2c8;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      header { flex-direction: column; align-items: stretch; }
+      .filter-group { border-radius: 40px; overflow-x: auto; flex-wrap: nowrap; padding: 0.5rem 0.8rem; justify-content: flex-start; }
+      .filter-btn { flex-shrink: 0; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>
+      🧴 Etalase Parfum
+      <small>semua varian</small>
+    </h1>
+    <div class="filter-group" id="filterGroup">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="feminim">🌸 Feminim</button>
+      <button class="filter-btn" data-filter="masculine">🧔 Masculine</button>
+      <button class="filter-btn" data-filter="unisex">⚖️ Unisex</button>
+      <span class="counter" id="counter">0</span>
+    </div>
+  </header>
+
+  <div class="grid" id="cardGrid"></div>
+</div>
+
+<script>
+  // ========== DATA GABUNGAN dari seluruh file ==========
+  // Berdasarkan etalase.pdf + 1-30.pdf + 31-60.pdf + 61-90.pdf + 91-100.pdf
+  const products = [
+    // 1-30 (dari 1-30.pdf)
+    { no: 1, name: "MIX Parfum", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk mandarin, aprikot, persik, peony, mawar, teh hijau, melati, citrus, musk.", notes: "Aroma bunga peony, mawar. Segar, bersih, floral lembut, elegan." },
+    { no: 2, name: "Scandalous", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem/lembut, elegan. Floral fruity (raspberry liqueur, black peony, praline).", notes: "Terinspirasi dari bunga & buah. Lembut dan elegan." },
+    { no: 3, name: "DR Sauvage Force", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma manis, kalem/lembut, mewah. Jeruk, kayu cendana, amber.", notes: "Maskulin, mewah, aroma kayu & jeruk." },
+    { no: 4, name: "Libre", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, manis. Floral, lavender, bunga jeruk, vanila.", notes: "Berani, feminin, segar." },
+    { no: 5, name: "Pink Chippon", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma manis, kalem/lembut. Floral fruity, buah-buahan dan bunga.", notes: "Wangi manis, kalem." },
+    { no: 6, name: "Gucci Flora", gender: "feminim", desc: "Pemakaian indoor & outdoor. Soft floral, fruity, manis. Red Berries, Mandarin, Kamboja, Jasmin.", notes: "Soft floral, fruity." },
+    { no: 7, name: "Escada Cherry", gender: "feminim", desc: "Pemakaian indoor & outdoor. Manis asam segar. Sangat terasa aroma buah ceri juicy dan segar.", notes: "Buah ceri yang segar." },
+    { no: 8, name: "Candy Love", gender: "feminim", desc: "Pemakaian indoor & outdoor. Segar dan manis dari buah apel, pir, atau beri. Menciptakan kesan ceria.", notes: "Segar, manis, ceria." },
+    { no: 9, name: "Kenzo Bali", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma segar, lembut. Pear, Bergamot, floral, vanila, musk.", notes: "Fruity-floral tropis segar." },
+    { no: 10, name: "Roman Wish", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, romantis, ceria. Mawar, anggrek, stroberi (seperti Pantene merah).", notes: "Segar, romantis, ceria." },
+    { no: 11, name: "Blooming Baquet", gender: "feminim", desc: "Pemakaian outdoor. Aroma segar, kalem/lembut. Bunga peony, mawar, jeruk mandarin.", notes: "Segar, bersih, floral lembut." },
+    { no: 12, name: "Maher Zain", gender: "unisex", desc: "Pemakaian indoor & outdoor. Citrus, kayu, rempah, oriental. Kalem, lembut, sejuk, menenangkan.", notes: "Kayu, rempah, oriental." },
+    { no: 13, name: "DR Mis DR", gender: "feminim", desc: "Pemakaian indoor. Floral, Fruity, Woody, Musky. Mawar, Melati, Peony, Jeruk, Aprikot, Persik, Madu.", notes: "Floral fruity woody." },
+    { no: 14, name: "Buble Gum", gender: "feminim", desc: "Pemakaian indoor & outdoor. Wangi manis, ceria playful, segar. Wangi manis permen karet.", notes: "Manis, playful." },
+    { no: 15, name: "1 Milion Lucky", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, maskulin, kalem. Buah plum, anggur, kayu, kacang hazelnut.", notes: "Maskulin, segar, kayu." },
+    { no: 16, name: "HB Elixir For Her", gender: "feminim", desc: "Pemakaian indoor & outdoor. Ambery floral kaya, hangat, sensual. Pink Pepper, Amber, Bunga datura.", notes: "Hangat, sensual." },
+    { no: 17, name: "Angel Heart", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem. Floral, aprikot, jeruk mandarin, nanas, grapefruit.", notes: "Segar, floral fruity." },
+    { no: 18, name: "Dunhil Blue", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk mandarin, bergamot, leci, lotus, sentuhan laut.", notes: "Modern, segar." },
+    { no: 19, name: "Avril Lavigne", gender: "feminim", desc: "Pemakaian outdoor. Fruity-floral tropis segar. Markisa, Jeruk Bali, Anggrek, Jasmine.", notes: "Tropis segar." },
+    { no: 20, name: "Musk Al Madinah", gender: "unisex", desc: "Pemakaian indoor & outdoor. Khas timteng hangat, musk, woody, powdery. Rempah dan bunga.", notes: "Hangat, musk, woody." },
+    { no: 21, name: "Pramugari", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut, elegan. Floral, melati, citrus.", notes: "Segar, kalem, elegan." },
+    { no: 22, name: "Cliniq Happy Man", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk segar ringan, aroma laut, kayu.", notes: "Segar, kalem." },
+    { no: 23, name: "Taylor Swift", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma Floral, Fruity. Leci, jeruk keprok, kelopak magnoli, teh.", notes: "Floral fruity segar." },
+    { no: 24, name: "Aqua Kiss", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, lembut, ringan. Bunga freesia dan daisy, water lily.", notes: "Ringan, segar." },
+    { no: 25, name: "Nagita Slavina", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem. Floral khas, manis dan soft.", notes: "Soft floral manis." },
+    { no: 26, name: "Selene Gomes", gender: "feminim", desc: "Pemakaian indoor & outdoor. Segar, manis, Floral, Fruity hangat kompleks. Raspberry, Nanas, Jeruk, Peach, Fresia.", notes: "Hangat kompleks." },
+    { no: 27, name: "Black Opium", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma manis, kalem/lembut. Bunga Jasmin, orange blossom, kopi, vanila.", notes: "Manis, kopi, vanila." },
+    { no: 28, name: "Incanto Shine", gender: "unisex", desc: "Pemakaian indoor & outdoor, cocok kuliah. Aroma segar, manis. Nanas, markisa, bergamot, citrus.", notes: "Segar, manis, cocok kuliah." },
+    { no: 29, name: "Malaikat Subuh", gender: "feminim", desc: "Pemakaian outdoor. Aroma manis. Apel merah, buah persik putih.", notes: "Manis, apel & persik." },
+    { no: 30, name: "Blue Emotion", gender: "masculine", desc: "Pemakaian outdoor. Aroma segar, eksotis, mewah. Citrus, jeruk mandarin, bergamot, lemon. Makin keringetan makin wangi.", notes: "Eksotis, segar." },
+
+    // 31-60 (dari 31-60.pdf)
+    { no: 31, name: "Vanilla Ice", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma manis, lembut. Es krim vanilla, creamy, pir, beri, floral, musk.", notes: "Manis, creamy, vanilla." },
+    { no: 32, name: "Bacarrat", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem/lembut, elegan. Melati, saffron, amberwood, ambergris, manis madu.", notes: "Elegan, manis madu." },
+    { no: 33, name: "212 VIP Man", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, maskulin, kalem. Kayu oriental, cocktail vodka, markisa.", notes: "Maskulin, kayu." },
+    { no: 34, name: "Jesika Parker", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, lembut. Lemon, Sisilia, lavender, cokelat hitam, daun geranium.", notes: "Segar, lembut." },
+    { no: 35, name: "Lux", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem. Aroma sabun mandi.", notes: "Segar, sabun." },
+    { no: 36, name: "Mont Paris", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, fruity, floral, woody. Raspberry, Stroberi, Jasmin, peony, cedar.", notes: "Fruity floral woody." },
+    { no: 37, name: "May Way", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma floral-woody elegan. Bunga putih, bergamot, jeruk, cedar.", notes: "Elegan floral woody." },
+    { no: 38, name: "Caramel Popcorn", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma manis. Karamel, creamy.", notes: "Manis, karamel." },
+    { no: 39, name: "Zara Orchid", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma floral, fruity. Bunga segar mawar dan bakung lembah dengan persik dan apel. Dasar musk, kayu, amber.", notes: "Floral fruity." },
+    { no: 40, name: "Switzal", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma bedak bayi lembut, bersih, segar. Bunga (lily, mawar) dan sedikit vanilla.", notes: "Bedak bayi, segar." },
+    { no: 41, name: "Bulgari Aqua", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Citrus, rumput laut Oceania, lavender, flower cotton.", notes: "Segar, laut." },
+    { no: 42, name: "Omnia Ametys", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut, elegan. Floral, pink grapefruit, green sap, bunga Iris, Bulgarian rose.", notes: "Elegan, floral." },
+    { no: 43, name: "Vanilla Cake", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma manis, lembut, creamy. Buttercream, karamel, gula, susu, almond. Kue vanila hangat.", notes: "Manis, creamy, vanilla." },
+    { no: 44, name: "Casson Baby", gender: "unisex", desc: "Pemakaian indoor & outdoor. Wangi bedak bayi lembut khas bayi. Powdery dan segar.", notes: "Bedak bayi." },
+    { no: 45, name: "Creed Adventures", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Nanas, apel, blackcurrant, melati, mawar, kayu birch.", notes: "Segar, maskulin." },
+    { no: 46, name: "Cuddle", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem. Bedak bayi, floral, powdery, musk.", notes: "Bedak, floral, musk." },
+    { no: 47, name: "Jlo Still", gender: "unisex", desc: "Pemakaian outdoor. Aroma segar. Bunga jasmin, greentea. Makin keringetan makin semberbak.", notes: "Jasmin, greentea." },
+    { no: 48, name: "Polo Sport", gender: "masculine", desc: "Pemakaian outdoor. Aroma segar. Citrus, mint, notes laut, kayu, cedar, amber.", notes: "Segar, sporty." },
+    { no: 49, name: "D&G Light Blue", gender: "unisex", desc: "Pemakaian indoor & outdoor. Fresh, bersih, citrus. Lemon Sisilia, apel, bunga putih, cedar, musk, amber.", notes: "Fresh, citrus." },
+    { no: 50, name: "Invictus", gender: "masculine", desc: "Pemakaian outdoor. Aroma fresh, manis, woody maskulin. Grapefruit, Marine, jeruk mandarin, Lavender, Daun Salam, Melati, Amber.", notes: "Fresh, manis, woody." },
+    { no: 51, name: "Chanel Coco", gender: "feminim", desc: "Pemakaian indoor & outdoor. Oriental floral, fruity segar, mewah. Jeruk, Mawar, Melati, vanila. Modern, berani.", notes: "Mewah, floral." },
+    { no: 52, name: "Escada Sexy Gravity", gender: "feminim", desc: "Pemakaian indoor & outdoor. Buah manis, bunga elegan. Rasberry, blackcurrant, strawberry, red peony, lili.", notes: "Buah manis, bunga." },
+    { no: 53, name: "Versace Eros", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aroma manis, segar, kalem/lembut. Daun mint, apel hijau, lemon, vanila.", notes: "Manis, segar." },
+    { no: 54, name: "Jo Malone", gender: "feminim", desc: "Pemakaian indoor & outdoor. Fruity, Floral, Herbal Citrus, woody. Pir, Melon, freesia, mawar, musk, amber.", notes: "Fruity floral woody." },
+    { no: 55, name: "Escada Moon Sparkle", gender: "feminim", desc: "Pemakaian indoor & outdoor. Fruity dipadu dengan candy. Strawberry, Kismis hitam, citrus, buah merah.", notes: "Fruity candy." },
+    { no: 56, name: "SOTB", gender: "feminim", desc: "Pemakaian indoor & outdoor. Tropis segar, manis, sensual. Jeruk, tuberose, musk, vanila.", notes: "Tropis sensual." },
+    { no: 57, name: "Black Coffee", gender: "unisex", desc: "Pemakaian indoor & outdoor. Pahit kuat, tapi juga punya dimensi manis alami.", notes: "Pahit manis." },
+    { no: 58, name: "Bulgari Rose", gender: "feminim", desc: "Pemakaian indoor & outdoor. Mawar segar, feminin, sentuhan buah dan musk halus, romantis elegan.", notes: "Mawar, feminin." },
+    { no: 59, name: "Vanilla Mango", gender: "feminim", desc: "Pemakaian indoor & outdoor. Aroma manis, vanila, segar tropis. Kehangatan vanila dan kesegaran mangga.", notes: "Vanila, mangga." },
+    { no: 60, name: "D&G Imperatis", gender: "feminim", desc: "Pemakaian indoor & outdoor. Menggabungkan bau manis semangka dan kiwi.", notes: "Semangka, kiwi." },
+
+    // 61-90 (dari 61-90.pdf)
+    { no: 61, name: "Bulgari Extreme", gender: "masculine", desc: "Pemakaian indoor & outdoor. Woody, Aromatic, citrus. Jeruk, Bergamot, Lavender, teh hijau, pala, cendana.", notes: "Woody, citrus." },
+    { no: 62, name: "California", gender: "unisex", desc: "Pemakaian indoor & outdoor. Citrus, aquatic, floral, manis dan powdery. Jeruk, Lemon, lavender, rosemary, cedarwood, musk.", notes: "Citrus, aquatic." },
+    { no: 63, name: "Amer Al Oud", gender: "unisex", desc: "Pemakaian indoor & outdoor. Kayu gaharu (oud) dalam dan hangat, sentuhan manis gula, vanila, karamel, rempah atau amber.", notes: "Oud, hangat." },
+    { no: 64, name: "Aigner Black", gender: "masculine", desc: "Pemakaian indoor & outdoor. Fruity, Fresh, Woody. Bergamot, grapefruit, orange, mint, pinus.", notes: "Fruity, fresh." },
+    { no: 65, name: "Grey Jay Rose", gender: "masculine", desc: "Pemakaian indoor & outdoor. Citrus, kayu, rempah, oriental. Plum, Bergamot, madu, cedarwood, ozonic segar.", notes: "Oriental, kayu." },
+    { no: 66, name: "Midnight Fantasy", gender: "feminim", desc: "Pemakaian indoor & outdoor. Fruity, Floral. Ceri hitam, plum, Freesia, Iris, Vanila, Amber.", notes: "Fruity floral." },
+    { no: 67, name: "Blue De Chanel", gender: "masculine", desc: "Pemakaian indoor & outdoor. Woody aromatik intens. Bergamot, grapefruit, mint, lavender, jasmin, cedarwood, amberwood.", notes: "Woody intens." },
+    { no: 68, name: "YSL Y", gender: "masculine", desc: "Pemakaian indoor & outdoor. Segar, bersih, maskulin. Apel Hijau.", notes: "Segar, maskulin." },
+    { no: 69, name: "White Musk Body Shop", gender: "unisex", desc: "Pemakaian indoor & outdoor. Lembut, bersih, sensual, sedikit powder. Melati, lily of the valley, mawar.", notes: "Musk, floral." },
+    { no: 70, name: "Sisi", gender: "feminim", desc: "Pemakaian indoor & outdoor. Lembut, elegan, manis, dan segar.", notes: "Lembut, elegan." },
+    // tambahan dari 61-90 yang terlewat (Gucci Garden, dll) 71 dst
+    { no: 71, name: "Gucci Garden", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma segar, floral, woody. Kombinasi bunga dan kayu.", notes: "Floral woody." },
+    { no: 72, name: "Bulgari Extreme", gender: "masculine", desc: "Pemakaian indoor & outdoor. Woody, Aromatic, citrus. Jeruk, Bergamot, Lavender, teh hijau, pala, cendana.", notes: "Woody citrus." },
+
+    // 91-100 (dari 91-100.pdf)
+    { no: 91, name: "Blue Ice", gender: "masculine", desc: "Pemakaian indoor & outdoor. Segar, dingin, aquatic. Bergamot, Jeruk, jasmine, rempah, saldaw wood.", notes: "Aquatic, dingin." },
+    { no: 92, name: "Imagination", gender: "masculine", desc: "Pemakaian indoor & outdoor. Citrus, rempah. Bergamot, jeruk, jahe, bunga jeruk.", notes: "Citrus, rempah." },
+    { no: 93, name: "Hawas Ice", gender: "masculine", desc: "Pemakaian indoor & outdoor. Manis, Fruity, Woody. Apel, Lemon, Bergamot, Plum Manis, Kayu apung.", notes: "Fruity woody." },
+    { no: 94, name: "9 PM Rebel", gender: "masculine", desc: "Pemakaian indoor & outdoor. Aromatic Fruity. Nanas, kayu, apel hijau.", notes: "Fruity aromatic." },
+    { no: 95, name: "Twily De Hermes", gender: "feminim", desc: "Pemakaian indoor & outdoor. Perpaduan menyegarkan Leci, jahe, tuberose, dan sandalwood.", notes: "Segar, leci." },
+    { no: 96, name: "Bundling 3 botol 15ml", gender: "unisex", desc: "Paket bundling 3 botol 15ml.", notes: "Bundle 3 botol." },
+    { no: 97, name: "Simponi", gender: "unisex", desc: "Pemakaian indoor & outdoor. Segar, fruity, citrusy dengan dominasi grapefruit, orange, bergamot.", notes: "Citrus, fruity." },
+    { no: 98, name: "Melon", gender: "unisex", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem/lembut. Aroma buah melon.", notes: "Melon segar." },
+    { no: 99, name: "JPG Lemaie", gender: "masculine", desc: "Pemakaian indoor & outdoor. Segar dan manis dari mint, lavender, dan bergamot. Kayu manis, orange blossom.", notes: "Segar, manis." },
+    { no: 100, name: "Bebas Request", gender: "unisex", desc: "Varian bebas request sesuai keinginan pelanggan.", notes: "Custom request." },
+  ];
+
+  // ========== RENDER ==========
+  const grid = document.getElementById('cardGrid');
+  const counter = document.getElementById('counter');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+
+  let currentFilter = 'all';
+
+  function render() {
+    const filtered = currentFilter === 'all' 
+      ? products 
+      : products.filter(p => p.gender === currentFilter);
+
+    counter.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="empty-state">☁️ Tidak ada varian untuk filter ini</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(p => {
+      const genderClass = p.gender === 'feminim' ? 'badge-feminim' : 
+                          p.gender === 'masculine' ? 'badge-masculine' : 'badge-unisex';
+      return `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">${p.name}</span>
+            <span class="card-number">#${p.no}</span>
+          </div>
+          <div>
+            <span class="card-badge ${genderClass}">${p.gender}</span>
+          </div>
+          <div class="card-desc">${p.desc}</div>
+          ${p.notes ? `<div class="card-notes">🍃 ${p.notes}</div>` : ''}
+          <div class="card-meta">
+            <span>🏷️ ${p.gender}</span>
+            <span>📌 #${p.no}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ========== FILTER ==========
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      render();
+    });
+  });
+
+  // ========== INIT ==========
+  render();
+</script>
+</body>
+</html>
