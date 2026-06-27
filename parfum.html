@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etalase Parfum</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <title>Etalase Parfum Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,502 +14,787 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f7f6f4;
-      padding: 2rem 1.5rem;
+      background: #f7f7f8;
       min-height: 100vh;
-      color: #1e1a17;
+      color: #1a1a1a;
     }
 
     .container {
-      max-width: 1440px;
+      max-width: 1320px;
       margin: 0 auto;
+      padding: 2rem 2rem 4rem;
     }
 
-    /* ===== HEADER ===== */
-    .header {
+    /* ===== HERO HEADER ===== */
+    .hero {
+      background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 24px;
+      padding: 3rem 3.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(200,168,124,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 2rem;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #edebe8;
+      gap: 1.5rem;
     }
 
-    .header-left {
+    .hero-left {
       display: flex;
-      align-items: baseline;
+      flex-direction: column;
       gap: 0.75rem;
-      flex-wrap: wrap;
     }
 
-    .header-title {
-      font-size: 1.75rem;
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200,168,124,0.15);
+      color: #c8a87c;
+      font-size: 0.6rem;
       font-weight: 700;
-      color: #1e1a17;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      width: fit-content;
+      border: 1px solid rgba(200,168,124,0.2);
     }
 
-    .header-sub {
-      font-size: 0.85rem;
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .hero-title span {
+      color: #c8a87c;
+      position: relative;
+    }
+
+    .hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #c8a87c, transparent);
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
       font-weight: 400;
-      color: #9a8c82;
+      color: #a0a0a0;
+      max-width: 440px;
+      line-height: 1.7;
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: rgba(255,255,255,0.05);
+      padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-label {
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: #888888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.1rem;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 45px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ===== FILTER SECTION - REDESIGNED ===== */
+    .filter-wrapper {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #f0f0f0;
+    }
+
+    .filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .filter-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .filter-header-icon {
+      width: 32px;
+      height: 32px;
+      background: #f5f5f5;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #999;
+    }
+
+    .filter-header-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #333;
       letter-spacing: 0.02em;
     }
 
-    .header-badge {
-      background: #f0ece8;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #5a4c42;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    .filter-header-stats {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #999;
+      background: #f5f5f5;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
     }
 
-    /* ===== FILTER SECTION ===== */
-    .filter-section {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
-      border: 1px solid #efedeb;
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .filter-category {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem 1.75rem;
-      transition: box-shadow 0.2s ease;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .filter-section:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-
-    .filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.2rem 0.4rem;
-    }
-
-    .filter-label {
-      font-size: 0.6rem;
+    .filter-category-label {
+      font-size: 0.55rem;
       font-weight: 700;
-      color: #9a8c82;
+      color: #999;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-right: 0.25rem;
-      padding: 0.1rem 0.2rem;
+      padding-left: 0.2rem;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
     }
 
     .filter-btn {
       background: transparent;
-      border: 1.5px solid transparent;
+      border: 1.5px solid #f0f0f0;
       padding: 0.3rem 1rem;
       border-radius: 30px;
       font-size: 0.7rem;
-      font-weight: 600;
-      color: #5a4c42;
+      font-weight: 500;
+      color: #777;
       cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: 0.02em;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-family: inherit;
+      letter-spacing: 0.01em;
+      position: relative;
     }
 
     .filter-btn:hover {
-      background: #f5f2ef;
-      border-color: #e0dad5;
+      border-color: #d0d0d0;
+      color: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .filter-btn.active {
-      background: #1e1a17;
+      background: #1a1a1a;
+      border-color: #1a1a1a;
       color: #ffffff;
-      border-color: #1e1a17;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
 
-    .filter-btn.active-gender {
-      background: #1e1a17;
-      color: #ffffff;
-      border-color: #1e1a17;
+    .filter-btn.active::before {
+      content: '•';
+      margin-right: 0.3rem;
+      color: #c8a87c;
     }
 
-    .filter-btn.active-scent {
-      background: #b0886e;
-      color: #ffffff;
-      border-color: #b0886e;
-    }
-
-    .filter-btn.active-place {
-      background: #5f8596;
-      color: #ffffff;
-      border-color: #5f8596;
-    }
-
-    .filter-btn.active-activity {
-      background: #7f9466;
-      color: #ffffff;
-      border-color: #7f9466;
-    }
-
-    .filter-divider {
-      width: 1px;
-      height: 28px;
-      background: #e8e3de;
-    }
-
-    .filter-stats {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: #5a4c42;
-      background: #f5f2ef;
-      padding: 0.2rem 1.1rem;
-      border-radius: 40px;
-      margin-left: auto;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-    }
-
-    .reset-btn {
+    .filter-btn-all {
       background: transparent;
-      border: 1.5px solid #e0dad5;
-      padding: 0.3rem 1.1rem;
+      border: 1.5px solid #f0f0f0;
+      padding: 0.3rem 1rem;
       border-radius: 30px;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      color: #7a6c62;
+      color: #777;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-family: inherit;
+      letter-spacing: 0.01em;
+    }
+
+    .filter-btn-all:hover {
+      border-color: #d0d0d0;
+      color: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .filter-btn-all.active {
+      background: #f5f5f5;
+      border-color: #e0e0e0;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .filter-btn-all.active::before {
+      content: '✓ ';
+      color: #c8a87c;
+    }
+
+    .filter-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f5f5f5;
+    }
+
+    .filter-reset-btn {
+      background: transparent;
+      border: none;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #999;
       cursor: pointer;
       transition: all 0.2s ease;
       font-family: inherit;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .reset-btn:hover {
-      background: #f5f2ef;
-      border-color: #c9bfb7;
-      color: #3d332b;
+    .filter-reset-btn:hover {
+      color: #333;
+      background: #f5f5f5;
+    }
+
+    .filter-active-badge {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #c8a87c;
+      background: rgba(200,168,124,0.1);
+      padding: 0.15rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(200,168,124,0.15);
+      display: none;
+    }
+
+    .filter-active-badge.show {
+      display: inline-block;
     }
 
     /* ===== GRID ===== */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
 
-    /* ===== CARD ===== */
+    /* ===== CARD - PREMIUM ===== */
     .card {
       background: #ffffff;
-      border-radius: 16px;
-      padding: 1.25rem 1.25rem 1.5rem;
-      border: 1px solid #efedeb;
-      transition: all 0.25s ease;
+      border-radius: 18px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid #f0f0f0;
       display: flex;
       flex-direction: column;
+      position: relative;
       box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
 
     .card:hover {
-      border-color: #d6cfc8;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-      transform: translateY(-3px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-      gap: 0.3rem;
+      transform: translateY(-6px);
+      border-color: #e0e0e0;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
     }
 
     .card-number {
-      font-size: 0.6rem;
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      font-size: 0.5rem;
       font-weight: 700;
-      color: #b8aca2;
-      background: #f5f2ef;
-      padding: 0.1rem 0.6rem;
-      border-radius: 30px;
+      color: #cccccc;
       letter-spacing: 0.04em;
+      background: #f8f8f8;
+      padding: 0.15rem 0.7rem;
+      border-radius: 30px;
+      font-variant-numeric: tabular-nums;
     }
 
     .card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #1e1a17;
-      word-break: break-word;
+      color: #1a1a1a;
       letter-spacing: -0.01em;
       line-height: 1.3;
+      margin-bottom: 0.6rem;
+      padding-right: 3.5rem;
     }
 
     .card-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 0.25rem 0.4rem;
-      margin-bottom: 0.6rem;
-      padding: 0.1rem 0;
+      margin-bottom: 0.75rem;
     }
 
     .card-badge {
-      display: inline-block;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       font-weight: 700;
-      padding: 0.15rem 0.65rem;
+      padding: 0.15rem 0.7rem;
       border-radius: 30px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
     .badge-feminim {
-      background: #f5e8e4;
-      color: #a84f45;
+      background: #f8f0ee;
+      color: #b05a4a;
     }
 
     .badge-masculine {
-      background: #e4eaf0;
-      color: #2d5f7a;
+      background: #edf0f5;
+      color: #3a5a8a;
     }
 
     .badge-unisex {
-      background: #e4ece4;
-      color: #3d7a5a;
+      background: #edf5ed;
+      color: #4a8a5a;
     }
 
     .badge-scent-manis {
-      background: #f5ede4;
-      color: #a87d5f;
+      background: #f8f2ea;
+      color: #b08050;
     }
 
     .badge-scent-segar {
-      background: #e4edf0;
-      color: #3d7a85;
+      background: #eaf3f5;
+      color: #4a8a95;
     }
 
     .badge-place-indoor {
-      background: #e8edf0;
-      color: #4d6a7a;
+      background: #f0f2f5;
+      color: #5a6a8a;
     }
 
     .badge-place-outdoor {
-      background: #edf0e8;
-      color: #5d7a4d;
+      background: #f0f5ed;
+      color: #5a8a4a;
     }
 
     .badge-activity-olahraga {
-      background: #eef0e8;
-      color: #6a7a4d;
+      background: #f2f5ed;
+      color: #6a8a4a;
     }
 
     .badge-activity-ac {
-      background: #e8edf5;
-      color: #4d6a8a;
+      background: #edf0f5;
+      color: #4a6a9a;
     }
 
     .card-desc {
-      margin: 0.2rem 0 0.4rem;
-      font-size: 0.82rem;
-      color: #4a3e36;
-      line-height: 1.6;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: #555555;
+      margin: 0 0 0.4rem;
       font-weight: 400;
+      flex: 1;
     }
 
     .card-notes {
-      font-size: 0.75rem;
-      color: #6f5d4e;
-      background: #f8f6f4;
-      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+      color: #666666;
+      background: #f8f8f8;
+      padding: 0.5rem 0.8rem;
       border-radius: 10px;
-      margin: 0.2rem 0 0.4rem;
-      border-left: 3px solid #e0dad5;
-      line-height: 1.5;
+      margin: 0.3rem 0 0.5rem;
+      line-height: 1.6;
+      border-left: 3px solid #c8a87c;
+      font-style: italic;
     }
 
-    .card-meta {
+    .card-footer {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem 0.6rem;
-      margin-top: 0.4rem;
-      padding-top: 0.6rem;
-      border-top: 1px solid #f0edeb;
-      margin-top: auto;
-      font-size: 0.6rem;
-      font-weight: 500;
-      color: #9a8c82;
-      letter-spacing: 0.02em;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f0f0f0;
     }
 
-    .card-meta span {
-      background: #f7f5f3;
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 0.4rem;
+    }
+
+    .card-tag {
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: #999999;
+      background: #f5f5f5;
       padding: 0.1rem 0.6rem;
       border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
-    /* ===== EMPTY STATE ===== */
+    .card-action {
+      background: #1a1a1a;
+      border: none;
+      color: #ffffff;
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-family: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .card-action:hover {
+      background: #333333;
+      transform: scale(1.04);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card-action:active {
+      transform: scale(0.96);
+    }
+
+    /* ===== EMPTY ===== */
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 4.5rem 1rem;
-      color: #b8aca2;
-      background: #faf9f8;
-      border-radius: 24px;
-      border: 1.5px dashed #e0dad5;
-      font-weight: 500;
+      padding: 5rem 1rem;
+      color: #bbbbbb;
       font-size: 0.95rem;
+      font-weight: 400;
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #f0f0f0;
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 820px) {
-      body {
-        padding: 1.25rem 1rem;
+    @media (max-width: 1024px) {
+      .hero {
+        padding: 2.5rem 2rem;
       }
 
-      .header {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .filter-wrapper {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .filter-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem 1rem 2rem;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+      }
+
+      .hero-content {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-right {
+        padding: 0.5rem 1.5rem;
+        width: 100%;
+        justify-content: space-around;
+        gap: 1rem;
+        border-radius: 40px;
+      }
+
+      .hero-stat-number {
+        font-size: 1.4rem;
+      }
+
+      .filter-wrapper {
+        padding: 1rem 1rem;
+        border-radius: 16px;
+      }
+
+      .filter-header {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 0.5rem;
       }
 
-      .header-left {
+      .filter-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .filter-options {
+        gap: 0.2rem;
+      }
+
+      .filter-btn,
+      .filter-btn-all {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.7rem;
+      }
+
+      .filter-actions {
         flex-wrap: wrap;
-      }
-
-      .filter-section {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.65rem;
-        padding: 1rem 1.1rem;
-        border-radius: 14px;
-      }
-
-      .filter-group {
-        gap: 0.2rem 0.35rem;
-      }
-
-      .filter-divider {
-        display: none;
-      }
-
-      .filter-stats {
-        margin-left: 0;
-        text-align: center;
-      }
-
-      .reset-btn {
-        align-self: center;
+        gap: 0.5rem;
       }
 
       .grid {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
-    }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 0.75rem 0.5rem;
-      }
-
-      .header-title {
-        font-size: 1.35rem;
-      }
-
-      .filter-btn {
-        font-size: 0.62rem;
-        padding: 0.2rem 0.7rem;
-      }
-
-      .filter-label {
-        font-size: 0.55rem;
+      .card {
+        padding: 1.25rem 1rem 1rem;
       }
 
       .card-title {
         font-size: 0.95rem;
+        padding-right: 2.5rem;
       }
 
-      .card {
-        padding: 1rem 1rem 1.25rem;
+      .card-number {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.45rem;
       }
     }
 
-    /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-sub {
+        font-size: 0.85rem;
+      }
+
+      .hero-stat-number {
+        font-size: 1.2rem;
+      }
+
+      .filter-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .filter-btn,
+      .filter-btn-all {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.6rem;
+      }
     }
 
-    ::-webkit-scrollbar-track {
-      background: #f5f2ef;
+    /* ===== SCROLL ANIMATION ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    ::-webkit-scrollbar-thumb {
-      background: #d6cfc8;
-      border-radius: 10px;
+    .card {
+      animation: fadeInUp 0.5s ease forwards;
     }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: #c9bfb7;
-    }
+    .card:nth-child(2) { animation-delay: 0.05s; }
+    .card:nth-child(3) { animation-delay: 0.10s; }
+    .card:nth-child(4) { animation-delay: 0.15s; }
+    .card:nth-child(5) { animation-delay: 0.20s; }
+    .card:nth-child(6) { animation-delay: 0.25s; }
+    .card:nth-child(7) { animation-delay: 0.30s; }
+    .card:nth-child(8) { animation-delay: 0.35s; }
+    .card:nth-child(9) { animation-delay: 0.40s; }
+    .card:nth-child(10) { animation-delay: 0.45s; }
+    .card:nth-child(11) { animation-delay: 0.50s; }
+    .card:nth-child(12) { animation-delay: 0.55s; }
   </style>
 </head>
 <body>
 
 <div class="container">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-left">
-      <span class="header-title">Etalase Parfum</span>
-      <span class="header-sub">Koleksi Lengkap</span>
+  <!-- HERO HEADER -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-left">
+        <span class="hero-badge">Koleksi Eksklusif</span>
+        <h1 class="hero-title">Etalase <span>Parfum</span></h1>
+        <p class="hero-sub">Temukan aroma yang mencerminkan kepribadian anda. Dari yang segar hingga manis, semua tersedia dalam satu tempat.</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat">
+          <div class="hero-stat-number">100</div>
+          <div class="hero-stat-label">Varian</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">4</div>
+          <div class="hero-stat-label">Kategori</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">2</div>
+          <div class="hero-stat-label">Aroma</div>
+        </div>
+      </div>
     </div>
-    <span class="header-badge">100 Varian</span>
   </div>
 
-  <!-- FILTER SECTION -->
-  <div class="filter-section">
-    <!-- Gender -->
-    <div class="filter-group">
-      <span class="filter-label">Gender</span>
-      <button class="filter-btn active" data-filter="gender" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="gender" data-value="feminim">Feminim</button>
-      <button class="filter-btn" data-filter="gender" data-value="masculine">Masculine</button>
-      <button class="filter-btn" data-filter="gender" data-value="unisex">Unisex</button>
+  <!-- FILTER SECTION - REDESIGNED -->
+  <div class="filter-wrapper">
+    <div class="filter-header">
+      <div class="filter-header-left">
+        <div class="filter-header-icon">⌘</div>
+        <span class="filter-header-title">Filter Koleksi</span>
+      </div>
+      <div class="filter-header-stats" id="filterStats">0 varian</div>
     </div>
 
-    <div class="filter-divider"></div>
+    <div class="filter-grid">
+      <!-- Gender -->
+      <div class="filter-category">
+        <span class="filter-category-label">Gender</span>
+        <div class="filter-options">
+          <button class="filter-btn-all active" data-filter="gender" data-value="all">Semua</button>
+          <button class="filter-btn" data-filter="gender" data-value="feminim">Feminim</button>
+          <button class="filter-btn" data-filter="gender" data-value="masculine">Maskulin</button>
+          <button class="filter-btn" data-filter="gender" data-value="unisex">Unisex</button>
+        </div>
+      </div>
 
-    <!-- Scent -->
-    <div class="filter-group">
-      <span class="filter-label">Tipe Wangi</span>
-      <button class="filter-btn active" data-filter="scent" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="scent" data-value="manis">Manis</button>
-      <button class="filter-btn" data-filter="scent" data-value="segar">Segar</button>
+      <!-- Scent -->
+      <div class="filter-category">
+        <span class="filter-category-label">Aroma</span>
+        <div class="filter-options">
+          <button class="filter-btn-all active" data-filter="scent" data-value="all">Semua</button>
+          <button class="filter-btn" data-filter="scent" data-value="manis">Manis</button>
+          <button class="filter-btn" data-filter="scent" data-value="segar">Segar</button>
+        </div>
+      </div>
+
+      <!-- Place -->
+      <div class="filter-category">
+        <span class="filter-category-label">Suasana</span>
+        <div class="filter-options">
+          <button class="filter-btn-all active" data-filter="place" data-value="all">Semua</button>
+          <button class="filter-btn" data-filter="place" data-value="indoor">Indoor</button>
+          <button class="filter-btn" data-filter="place" data-value="outdoor">Outdoor</button>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="filter-category">
+        <span class="filter-category-label">Aktivitas</span>
+        <div class="filter-options">
+          <button class="filter-btn-all active" data-filter="activity" data-value="all">Semua</button>
+          <button class="filter-btn" data-filter="activity" data-value="olahraga">Olahraga</button>
+          <button class="filter-btn" data-filter="activity" data-value="ac">Diam di AC</button>
+        </div>
+      </div>
     </div>
 
-    <div class="filter-divider"></div>
-
-    <!-- Place -->
-    <div class="filter-group">
-      <span class="filter-label">Tempat</span>
-      <button class="filter-btn active" data-filter="place" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="place" data-value="indoor">Indoor</button>
-      <button class="filter-btn" data-filter="place" data-value="outdoor">Outdoor</button>
+    <div class="filter-actions">
+      <button class="filter-reset-btn" id="resetFilters">Reset Filter</button>
+      <span class="filter-active-badge" id="activeBadge">Filter aktif</span>
     </div>
-
-    <div class="filter-divider"></div>
-
-    <!-- Activity -->
-    <div class="filter-group">
-      <span class="filter-label">Aktivitas</span>
-      <button class="filter-btn active" data-filter="activity" data-value="all">Semua</button>
-      <button class="filter-btn" data-filter="activity" data-value="olahraga">Olahraga</button>
-      <button class="filter-btn" data-filter="activity" data-value="ac">Diam di AC</button>
-    </div>
-
-    <span class="filter-stats" id="filterStats">0 varian</span>
-    <button class="reset-btn" id="resetFilters">Reset Filter</button>
   </div>
 
   <!-- GRID -->
@@ -519,10 +804,10 @@
 
 <script>
   // ============================================================
-  // DATA PRODUK
+  // DATA
   // ============================================================
   const products = [
-    { no: 1, name: "MIX Parfum", gender: "feminim", scent: "segar", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, kalem/lembut. Jeruk mandarin, aprikot, persik, peony, mawar, teh hijau, melati, citrus, musk.", notes: "Aroma bunga peony, mawar. Segar, bersih, floral lembut, elegan." },
+    { no: 1, name: "MIX Parfum", gender: "feminim", scent: "segar", place: "indoor", activity: "ac", desc: "MIX", notes: "mix" },
     { no: 2, name: "Scandalous", gender: "feminim", scent: "manis", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, manis, kalem/lembut, elegan. Floral fruity (raspberry liqueur, black peony, praline).", notes: "Terinspirasi dari bunga & buah. Lembut dan elegan." },
     { no: 3, name: "DR Sauvage Force", gender: "masculine", scent: "manis", place: "indoor", activity: "olahraga", desc: "Pemakaian indoor & outdoor. Aroma manis, kalem/lembut, mewah. Jeruk, kayu cendana, amber.", notes: "Maskulin, mewah, aroma kayu & jeruk." },
     { no: 4, name: "Libre", gender: "feminim", scent: "manis", place: "indoor", activity: "ac", desc: "Pemakaian indoor & outdoor. Aroma segar, manis. Floral, lavender, bunga jeruk, vanila.", notes: "Berani, feminin, segar." },
@@ -618,6 +903,16 @@
 
   const grid = document.getElementById('cardGrid');
   const filterStats = document.getElementById('filterStats');
+  const activeBadge = document.getElementById('activeBadge');
+
+  function countActiveFilters() {
+    let count = 0;
+    if (filters.gender !== 'all') count++;
+    if (filters.scent !== 'all') count++;
+    if (filters.place !== 'all') count++;
+    if (filters.activity !== 'all') count++;
+    return count;
+  }
 
   function render() {
     const filtered = products.filter(p => {
@@ -628,14 +923,22 @@
       return true;
     });
 
+    const activeCount = countActiveFilters();
     filterStats.textContent = filtered.length + ' varian';
 
+    if (activeCount > 0) {
+      activeBadge.classList.add('show');
+      activeBadge.textContent = activeCount + ' filter aktif';
+    } else {
+      activeBadge.classList.remove('show');
+    }
+
     if (filtered.length === 0) {
-      grid.innerHTML = `<div class="empty-state">Tidak ada varian untuk filter yang dipilih</div>`;
+      grid.innerHTML = `<div class="empty-state">Tidak ada varian yang sesuai dengan filter yang dipilih</div>`;
       return;
     }
 
-    grid.innerHTML = filtered.map(p => {
+    grid.innerHTML = filtered.map((p, index) => {
       const genderClass = p.gender === 'feminim' ? 'badge-feminim' : 
                           p.gender === 'masculine' ? 'badge-masculine' : 'badge-unisex';
       const scentClass = p.scent === 'manis' ? 'badge-scent-manis' : 'badge-scent-segar';
@@ -646,11 +949,9 @@
       const activityLabel = p.activity === 'olahraga' ? 'Olahraga' : 'Diam di AC';
 
       return `
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">${p.name}</span>
-            <span class="card-number">#${p.no}</span>
-          </div>
+        <div class="card" style="animation-delay: ${index * 0.04}s">
+          <span class="card-number">No. ${p.no}</span>
+          <div class="card-title">${p.name}</div>
           <div class="card-badges">
             <span class="card-badge ${genderClass}">${p.gender}</span>
             <span class="card-badge ${scentClass}">${scentLabel}</span>
@@ -659,10 +960,12 @@
           </div>
           <div class="card-desc">${p.desc}</div>
           ${p.notes ? `<div class="card-notes">${p.notes}</div>` : ''}
-          <div class="card-meta">
-            <span>${p.gender}</span>
-            <span>${placeLabel}</span>
-            <span>#${p.no}</span>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">${p.gender}</span>
+              <span class="card-tag">${placeLabel}</span>
+            </div>
+            <button class="card-action">Lihat Detail</button>
           </div>
         </div>
       `;
@@ -670,28 +973,21 @@
   }
 
   // ============================================================
-  // EVENT LISTENERS
+  // EVENTS - UPDATED FOR NEW FILTER STRUCTURE
   // ============================================================
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelectorAll('.filter-btn, .filter-btn-all').forEach(btn => {
     btn.addEventListener('click', () => {
       const filterType = btn.dataset.filter;
       const value = btn.dataset.value;
 
       filters[filterType] = value;
 
-      const parentGroup = btn.closest('.filter-group');
-      parentGroup.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('active', 'active-gender', 'active-scent', 'active-place', 'active-activity');
+      // Update active state within the same category
+      const parentCategory = btn.closest('.filter-options');
+      parentCategory.querySelectorAll('.filter-btn, .filter-btn-all').forEach(b => {
+        b.classList.remove('active');
       });
-
-      if (value === 'all') {
-        btn.classList.add('active');
-      } else {
-        if (filterType === 'gender') btn.classList.add('active-gender');
-        else if (filterType === 'scent') btn.classList.add('active-scent');
-        else if (filterType === 'place') btn.classList.add('active-place');
-        else if (filterType === 'activity') btn.classList.add('active-activity');
-      }
+      btn.classList.add('active');
 
       render();
     });
@@ -703,8 +999,8 @@
     filters.place = 'all';
     filters.activity = 'all';
 
-    document.querySelectorAll('.filter-btn').forEach(b => {
-      b.classList.remove('active', 'active-gender', 'active-scent', 'active-place', 'active-activity');
+    document.querySelectorAll('.filter-btn, .filter-btn-all').forEach(b => {
+      b.classList.remove('active');
       if (b.dataset.value === 'all') {
         b.classList.add('active');
       }
